@@ -22,23 +22,27 @@ Vercel, GitHub Pages, etc.) by copying this folder as-is.
 4. **Add a Privacy Policy.** The Terms page links to a Privacy Policy that doesn't exist yet
    (`[link to be added]`) — this needs to be drafted separately; it wasn't in scope for this pass.
 5. **Refresh the screenshots periodically.** `images/screenshots/*.png` are real captures of the
-   running application (kiosk, display board, agent view, admin panel, reports), taken from a
-   demo Space seeded specifically for this purpose. They'll go stale as the UI evolves — re-take
-   them with a headless browser (Playwright or similar) pointed at a real running instance
-   whenever the screens change enough to look outdated.
+   running application, taken from a demo Space seeded specifically for this purpose. They'll go
+   stale as the UI evolves — re-take them with a headless browser (Playwright or similar) pointed
+   at a real running instance whenever the screens change enough to look outdated. Only 4 of the
+   7 captured screenshots are currently used on the page (`kiosk-terminal.png`, `display-board.png`,
+   `agent-view.png`, `admin-reports.png`) — `admin-overview.png`, `admin-queues.png`, and
+   `admin-branding.png` are left in the folder unused, available if a future revision adds them
+   back (e.g. a "how it's configured" section), but can also be deleted if not needed.
 
 ## Structure
 
 ```
 public_html/
-  index.html          Main landing page (hero, benefits, how it works, screenshots,
-                       integrations, security, CTA)
+  index.html          Main landing page — hero, 3 value blocks (visitor/staff/manager),
+                       integrations, closing CTA. Deliberately short and outcome-focused
+                       rather than a full feature list — see "Content notes" below.
   terms.html           Terms and Conditions (draft — see notice above)
   css/style.css         Full design system, no external dependencies
   js/main.js            App-link URL injection + mobile nav toggle (no framework)
   images/
     favicon.svg          Brand mark, used as the site favicon
-    screenshots/          Real product screenshots used throughout the page
+    screenshots/          Real product screenshots (4 used, 3 spare — see above)
   robots.txt
   sitemap.xml
 ```
@@ -46,12 +50,15 @@ public_html/
 ## Content notes
 
 - No emojis anywhere on the site, by explicit request — icons are hand-written inline SVG.
+- The page is deliberately short and sales-oriented, not a documentation page: 3 outcome-focused
+  value blocks (what changes for your visitors, your staff, and you) instead of an exhaustive
+  feature grid, and no separate technical "security architecture" section — a landing page's job
+  is to sell the outcome, not explain the implementation. If a more detailed features/security
+  page is wanted later, it belongs on a separate page linked from here, not bolted onto the
+  homepage.
 - The "Integrations" section names Painel de Chamada (paineldechamada.com.br) specifically, since
   Yes Queue has a real, working webhook-based integration with it (see `apps/api/src/call-integrations`
   in the main project).
-- The "Security & reliability" section only makes claims that are actually true of the running
-  product (Postgres Row-Level Security for tenant isolation, Argon2 password hashing, an
-  append-only audit log, role-based permissions) — nothing was invented for marketing effect.
 - No fabricated customer testimonials, logos, or usage statistics are included, since none of
   that exists yet for a pre-launch product — the trust bar deliberately describes the target
   market ("clinics, banks, government offices...") rather than naming specific unverified clients.

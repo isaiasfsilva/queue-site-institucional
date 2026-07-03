@@ -361,168 +361,49 @@ p { margin: 0 0 16px; }
   color: var(--color-ink);
 }
 
-/* --- Pain points --- */
+/* --- Value blocks --- */
 
-.pain-grid {
+.value-block {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
-}
-
-.pain-card {
-  padding: 28px;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  background: var(--color-surface);
-}
-
-.pain-card svg {
-  color: var(--color-primary);
-  margin-bottom: 16px;
-}
-
-.pain-card h3 {
-  margin-bottom: 8px;
-}
-
-.pain-card p {
-  color: var(--color-muted);
-  margin: 0;
-  font-size: 0.95rem;
-}
-
-/* --- Feature grid --- */
-
-.feature-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-}
-
-.feature-card {
-  padding: 28px;
-  border-radius: var(--radius-md);
-  border: 1px solid var(--color-border);
-  background: var(--color-surface);
-  transition: box-shadow 0.15s ease, border-color 0.15s ease;
-}
-
-.feature-card:hover {
-  box-shadow: var(--shadow-md);
-  border-color: #cbd5e1;
-}
-
-.feature-icon {
-  width: 44px;
-  height: 44px;
-  display: flex;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
   align-items: center;
-  justify-content: center;
-  border-radius: var(--radius-sm);
-  background: var(--color-primary-light);
-  color: var(--color-primary-dark);
-  margin-bottom: 18px;
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 24px 96px;
 }
 
-.feature-card h3 {
-  margin-bottom: 8px;
+.value-block:last-child {
+  padding-bottom: 0;
 }
 
-.feature-card p {
-  color: var(--color-muted);
-  font-size: 0.93rem;
-  margin: 0;
+.value-block.reverse .value-copy {
+  order: 2;
 }
 
-/* --- How it works --- */
-
-.steps {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
+.value-block.reverse .value-visual {
+  order: 1;
 }
 
-.step-card {
-  text-align: left;
+.value-copy p {
+  font-size: 1.05rem;
+  color: var(--color-body);
 }
 
-.step-number {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: var(--color-ink);
-  color: #ffffff;
-  font-weight: 700;
-  font-size: 0.9rem;
-  margin-bottom: 16px;
-}
-
-.step-shot {
-  border-radius: var(--radius-md);
+.value-visual {
+  border-radius: var(--radius-lg);
   overflow: hidden;
   border: 1px solid var(--color-border);
-  box-shadow: var(--shadow-sm);
-  margin-bottom: 16px;
+  box-shadow: var(--shadow-md);
   aspect-ratio: 4 / 3;
   background: var(--color-dark);
 }
 
-.step-shot img {
+.value-visual img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: top;
-}
-
-.step-card h3 {
-  font-size: 1rem;
-  margin-bottom: 6px;
-}
-
-.step-card p {
-  color: var(--color-muted);
-  font-size: 0.9rem;
-  margin: 0;
-}
-
-/* --- Gallery --- */
-
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-}
-
-.gallery-item {
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  border: 1px solid var(--color-border);
-  box-shadow: var(--shadow-sm);
-  background: var(--color-surface);
-}
-
-.gallery-item img {
-  width: 100%;
-  display: block;
-  border-bottom: 1px solid var(--color-border);
-}
-
-.gallery-caption {
-  padding: 16px 18px;
-}
-
-.gallery-caption h3 {
-  font-size: 0.95rem;
-  margin-bottom: 4px;
-}
-
-.gallery-caption p {
-  font-size: 0.85rem;
-  color: var(--color-muted);
-  margin: 0;
 }
 
 /* --- Integration section --- */
@@ -572,37 +453,6 @@ p { margin: 0 0 16px; }
 .integration-arrow {
   color: var(--color-primary);
   flex-shrink: 0;
-}
-
-/* --- Security section --- */
-
-.security-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-}
-
-.security-item {
-  display: flex;
-  gap: 16px;
-  padding: 22px;
-  border-radius: var(--radius-md);
-  background: var(--color-dark-alt);
-}
-
-.security-item svg {
-  flex-shrink: 0;
-  color: #60a5fa;
-}
-
-.security-item h3 {
-  font-size: 1rem;
-  margin-bottom: 6px;
-}
-
-.security-item p {
-  margin: 0;
-  font-size: 0.88rem;
 }
 
 /* --- CTA band --- */
@@ -750,21 +600,18 @@ p { margin: 0 0 16px; }
     order: -1;
   }
 
-  .pain-grid,
-  .feature-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .value-block {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding-bottom: 64px;
   }
 
-  .steps,
-  .gallery-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .value-block.reverse .value-copy,
+  .value-block.reverse .value-visual {
+    order: initial;
   }
 
   .integration-panel {
-    grid-template-columns: 1fr;
-  }
-
-  .security-grid {
     grid-template-columns: 1fr;
   }
 
@@ -814,11 +661,8 @@ p { margin: 0 0 16px; }
     padding: 64px 0;
   }
 
-  .pain-grid,
-  .feature-grid,
-  .steps,
-  .gallery-grid {
-    grid-template-columns: 1fr;
+  .value-block {
+    padding-bottom: 48px;
   }
 
   .cta-band {
